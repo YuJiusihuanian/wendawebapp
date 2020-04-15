@@ -102,7 +102,7 @@
             this.$ajax({
               method: 'get',
               responseType: 'json',
-              url: 'http://gpnubbs.fangweijun.top/api/v1/user/' + loginname ,
+              url: 'https://gpnubbs.fangweijun.top/api/v1/user/' + loginname ,
               data: {},
             }).then(function(res){
                 if(res.data.data && res.data){
@@ -140,7 +140,6 @@
   /* @import '../less/common.less'; */
   #User{
     width:100%;
-    height:100%;
     background:#fff;
     font-size:0.32rem;
   }
@@ -174,7 +173,6 @@
   }
   #User .list{
     margin-top:0.05rem;
-	height:30rem;
   }
   #User .list .mint-cell{
     height:1rem;

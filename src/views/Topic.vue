@@ -100,7 +100,7 @@
         this.topicId = this.$route.params.id;
         this.$ajax({
             method: 'get',
-            url:'http://gpnubbs.fangweijun.top/api/v1/topic/' + this.topicId
+            url:'https://gpnubbs.fangweijun.top/api/v1/topic/' + this.topicId
           })
             .then(function(response){
                 if(response.data.data){
@@ -154,7 +154,7 @@
                 });
                 this.$ajax({
                   method:'post',
-                  url:'http://gpnubbs.fangweijun.top/api/v1/reply/' + item.id +'/ups',
+                  url:'https://gpnubbs.fangweijun.top/api/v1/reply/' + item.id +'/ups',
                   data:accessdata
                 }).then(function(res){
                     if(res.data.success){
@@ -201,7 +201,7 @@
             let postData = qs.stringify(data);
             this.$ajax({
               method:'post',
-              url:'http://gpnubbs.fangweijun.top/api/v1/topic/' + this.topicId + '/replies',
+              url:'https://gpnubbs.fangweijun.top/api/v1/topic/' + this.topicId + '/replies',
               data:postData
             }).then(function(res){
                 if(res.data.success){

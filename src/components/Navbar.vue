@@ -52,7 +52,7 @@
     font-size:0.32rem !important;
   }
   .mint-navbar .mint-tab-item{
-	  padding:35px 0;
+	  padding:0.24rem 0;
   }
   .mint-navbar .mint-tab-item.is-selected{
     color:#FDDF6D !important;

@@ -58,7 +58,7 @@
         this.$ajax({
           method:'post',
           data:tokendata,
-          url:'http://gpnubbs.fangweijun.top/api/v1/accesstoken',
+          url:'https://gpnubbs.fangweijun.top/api/v1/accesstoken',
         }).then(function(response){
           let user = {
             loginname:response.data.loginname,
@@ -96,7 +96,6 @@
     width:100%;
     background-color:#fff;
     margin:0 auto;
-	height:12rem;
   }
   #Login .login{
     margin:0 auto;

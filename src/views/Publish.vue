@@ -83,7 +83,7 @@
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded'
             },
-            url:'http://gpnubbs.fangweijun.top/api/v1/topics',
+            url:'https://gpnubbs.fangweijun.top/api/v1/topics',
             data:addData
 
           }).then(function(res){
@@ -126,7 +126,6 @@
 <style>
   #Publish{
     width:100%;
-    height:100%;
     background-color:#fff;
     padding-bottom:1.5rem;
   }

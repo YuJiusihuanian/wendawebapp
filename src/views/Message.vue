@@ -71,7 +71,7 @@
       this.$ajax({
         method: 'get',
         responseType: 'json',
-        url: 'http://gpnubbs.fangweijun.top/api/v1/messages?accesstoken=' + this.userInfo.token,
+        url: 'https://gpnubbs.fangweijun.top/api/v1/messages?accesstoken=' + this.userInfo.token,
       }).then(function(res){
           if(res.data.data.has_read_messages.length > 0){
             this.messageData = res.data.data.has_read_messages;
@@ -96,10 +96,10 @@
 
   }
   #Message .mint-navbar .mint-tab-item{
-	  padding:35px 0;
+	  padding:0.24rem 0;
   }
   #Message #main{
-	  height:30rem;
+	  
   }
   #Message .is-selected{
     color:#FDDF6D !important;

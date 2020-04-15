@@ -17,6 +17,7 @@
           <Li>	
             <h4>广东技术师范大学</h4>
             <p>方伟俊毕业设计作品</p>
+			 <p>基于Vue前后端分离单页面应用WebApp设计与实现</p>			
           </Li>
           <Li>
             <h4>功能</h4>
@@ -25,7 +26,7 @@
           </Li>
           <Li>
             <h4>技术栈</h4>
-            <p>基于vue vue-router vue-vuex axios Mint-ui babel的单页面应用webapp</p>
+            <p>基于Vue/Vue Router/Vuex/axios/Mint-ui/Vue CLI</p>
           </Li>
           <Li>
             <h4>意见反馈</h4>

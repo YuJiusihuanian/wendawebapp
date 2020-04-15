@@ -76,7 +76,7 @@
         this.$ajax({
           method: 'get',
           responseType: 'json',
-          url: 'http://gpnubbs.fangweijun.top/api/v1/topics',
+          url: 'https://gpnubbs.fangweijun.top/api/v1/topics',
           data: {},
           //请求参数
           params: {
