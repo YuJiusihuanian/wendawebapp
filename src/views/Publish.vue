@@ -50,7 +50,7 @@
             })
             this.$router.push({
               name:'More'
-            }).catch(err => {err})
+            })
             return false;
           }
 
@@ -90,7 +90,7 @@
               if(res.data.success){
                   this.$router.push({
                     name:'Home'
-                  }).catch(err => {err})
+                  })
               }
           }.bind(this)).catch(function(error){
             if(error.data.response){

@@ -96,7 +96,7 @@
                 })
                 this.$router.push({
                   name:'More'
-                }).catch(err => {err});
+                });
                 return false;
               }
             this.$ajax({

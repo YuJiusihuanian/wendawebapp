@@ -143,7 +143,7 @@
             if(!this.userInfo.userId){
                 this.$router.push({
                   name:'More'
-                }).catch(err => {err})
+                })
               Toast({
                 message:'请先登陆！',
                 className:'toast'

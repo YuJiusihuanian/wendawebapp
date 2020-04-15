@@ -27,15 +27,15 @@
       selected:function(num){
           if(num){
               switch(num){
-                case '1':this.$router.push({'Home':'home'}).catch(err => {err});
+                case '1':this.$router.push({'Home':'home'});
                 break;
-                case '2':this.$router.push({'Home':'home',query:{tab:'good'}}).catch(err => {err});
+                case '2':this.$router.push({'Home':'home',query:{tab:'good'}});
                   break;
-                case '3':this.$router.push({'Home':'home',query:{tab:'share'}}).catch(err => {err});
+                case '3':this.$router.push({'Home':'home',query:{tab:'share'}});
                   break;
-                case '4':this.$router.push({'Home':'home',query:{tab:'ask'}}).catch(err => {err});
+                case '4':this.$router.push({'Home':'home',query:{tab:'ask'}});
                   break;
-                case '5':this.$router.push({'Home':'home',query:{tab:'job'}}).catch(err => {err});
+                case '5':this.$router.push({'Home':'home',query:{tab:'job'}});
                   break;
               }
           }

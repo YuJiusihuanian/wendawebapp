@@ -36,7 +36,7 @@
           params:{
             loginname:this.userInfo.loginname
           }
-        }).catch(err => {err});
+        });
       }
     },
 
@@ -75,7 +75,7 @@
             params:{
                 loginname:user.loginname
             }
-          }).catch(err => {err});
+          });
 
 
         }.bind(this)).catch(function(error){
