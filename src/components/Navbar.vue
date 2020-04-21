@@ -1,7 +1,7 @@
 <template>
   <div id="Navbar">
-    <mt-navbar v-model="selected" :fixed=true>
-      <mt-tab-item :class="{'is-selected':!this.$route.query.tab}" id="1">全部</mt-tab-item>
+    <mt-navbar v-model="selected" :fixed='true'>
+      <mt-tab-item ref="click" :class="{'is-selected':!this.$route.query.tab}" id="1">全部</mt-tab-item>
       <mt-tab-item :class="{'is-selected':this.$route.query.tab === 'good'}" id="2">精华</mt-tab-item>
       <mt-tab-item :class="{'is-selected':this.$route.query.tab === 'share'}" id="3">分享</mt-tab-item>
       <mt-tab-item :class="{'is-selected':this.$route.query.tab === 'ask'}" id="4">问答</mt-tab-item>
@@ -39,7 +39,13 @@
                   break;
               }
           }
-  }
+  },
+		'$route' (to,from){
+			//底部导航返回首页重置数据
+			if(to.name === 'Home' && (from.name === 'Publish' || from.name === 'Message' || from.name === 'More')){
+				this.$refs.click.$el.click();
+			}
+		}
     }
   }
 </script>

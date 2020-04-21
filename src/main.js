@@ -7,7 +7,7 @@ import axios from 'axios';
 import filters from './filters';
 import store from './vuex/user.js'
 import 'mint-ui/lib/style.css';
-
+/* import keepAlick from 'keep-alive' */
 
 Vue.config.productionTip = false
 Vue.use(Mint);

@@ -1,10 +1,10 @@
 <template>
   <div id="Loadmore">
-      <ul v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="30">
-        <li class="topic" v-for="item in topics" :key="item.id">
+      <ul id="aa" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="50" infinite-scroll-immediate-check=true>
+        <li id="bb" class="topic" v-for="item in topics" :key="item.id">
           <router-link :to="{name:'Topic',params:{id:item.id}}">
             <div class="img">
-              <img class="head" :src="item.author.avatar_url" alt="">
+				<img class="head" :src="item.author.avatar_url" alt="">
             </div>
             <div class="content">
               <div class="info">
@@ -31,6 +31,7 @@
 <script>
   import utils from '../lib/utils.js'
   export default {
+	name: "Loadmore",
     data() {
       return {
         topStatus: '',
@@ -38,45 +39,61 @@
         index: {},
         hide:'hide',
         loading:false,
-        loginimg:false,
+        loginimg:true,
         topicarg:{
           page:1,
           tab:'all',
-          limit:20,
+          limit:10,
           mdrender:true
-
-        }
+        },
+		key:'scroll',
+		cacheData:0
       };
     },
     created(){
-
+		this.getTopics();
     },
     mounted(){
+		//详情返回确保是同一分类
       if(this.$route.query && this.$route.query.tab){
         this.topicarg.tab = this.$route.query.tab;
-      }
-      if (window.window.sessionStorage.topicarg && window.window.sessionStorage.tab === this.topicarg.tab) {
-        this.topics = JSON.parse(window.window.sessionStorage.topics);
-        this.topicarg = JSON.parse(window.window.sessionStorage.topicarg);
-      } else {
-        this.getTopics();
-      }
+      }	  
     },
+	activated(){
+		/* if(this.$route.query && this.$route.query.tab){
+		  this.topicarg.tab = this.$route.query.tab;
+		} */
+		//设置滚动条
+		this.cacheData = window.localStorage.getItem(this.key) ?JSON.parse(window.localStorage.getItem(this.key)) : null
+		document.body.scrollTop = this.cacheData;
+	},
+	deactivated () {
+		//获取滚动条
+		 window.localStorage.setItem(this.key, JSON.stringify(document.body.scrollTop))
+	},
     methods: {
+		arrToStr(arr){
+			for(var i =0;i<arr.length;i++){
+				var a =this.topics.options[i].value; 
+				arr[i] = a;
+			}
+			new_str= arr.join(",");
+		},
       loadMore() {
-        this.loading = true;
-        this.loginimg = true;
-        setTimeout(() => {
-          this.topicarg.page += 1;
-          this.getTopics();
-          this.loading = false;
-        }, 2500);
+		if(this.loginimg){
+			this.loading = true;
+			setTimeout(() => {
+			  this.topicarg.page += 1;
+			  this.getTopics();
+			  this.loading = false;
+			}, 1000);
+		}  
       },
       getTopics(){
         this.$ajax({
           method: 'get',
-          responseType: 'json',
-          url: 'https://gpnubbs.fangweijun.top/api/v1/topics',
+          responseType: 'json',//https://gpnubbs.fangweijun.top/
+          url: 'https://gpnubbs.fangweijun.top/api/v1/topics',//https://cnodejs.org/api/v1
           data: {},
           //请求参数
           params: {
@@ -93,16 +110,19 @@
         }).then(function (response) {
           let topics = {// eslint-disable-line no-unused-vars
             /* date: response.data.data[0].content, */
-            length: response.data.length,
+            length: response.data.data.length,
           }
+		  if(response.data.data.length == 0){
+			  this.loginimg = false;
+		  }
           if ( response.data && response.data.data) {
             response.data.data.forEach(this.mergeTopics);
-
           }
         }.bind(this))
       },
       mergeTopics(topic) {
         this.index[topic.id] = this.topics.length;
+		/* this.topics = topic; */
         this.topics.push(topic);
       },
       getTitles(tab){
@@ -137,18 +157,23 @@
       }
     },
     watch:{
-      '$route' (to , from){// eslint-disable-line no-unused-vars
-          if(to.query.tab){
-              this.topicarg.tab = to.query.tab;
-              this.topics = [];
-              this.index = {};
-          }else{
-            this.topicarg.tab = 'all';
-            this.topics = [];
-            this.index = {};
-          }
-          this.topicarg.page = 1;
-          this.getTopics();
+		//主题分类导航切换
+      '$route' (to,from){// eslint-disable-line no-unused-vars
+	  //导航分类中的切换数据绑定
+         if(to.name === 'Home' && from.name != 'Topic'){//当路由是去home 并且 是从topic过来的则不从新请求数据
+			 if(to.query.tab){
+			     this.topicarg.tab = to.query.tab;
+			     this.topics = [];
+			     this.index = {};
+			 }else{
+			   this.topicarg.tab = 'all';
+			   this.topics = [];
+			   this.index = {};
+			 }
+			 //切换后重新请求数据
+			 this.topicarg.page = 1;
+			 this.getTopics();
+		 }
       }
     }
 

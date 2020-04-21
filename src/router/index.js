@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Index from '../Index'
 Vue.use(Router);
 
-// const Index = resolve => require(['../Index.vue'], resolve);
 const Home = resolve => require(['../views/Home.vue'], resolve);
 const Publish = resolve => require(['../views/Publish.vue'], resolve);
 const Message = resolve => require(['../views/Message.vue'], resolve);
@@ -22,6 +21,9 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home,
+	  meta: {
+	        keepAlive: true // 需要被缓存
+	  }
     },
     {
       path: '/publish',

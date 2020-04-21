@@ -1,5 +1,5 @@
 <template>
-    <mt-tabbar v-model="selected" id="Tabbar" :fixed=true>
+    <mt-tabbar v-model="selected" id="Tabbar" :fixed="true">
         <mt-tab-item href="#/home" id="1">
           <img v-show="this.$route.name ==='Home'" slot="icon" src="../assets/svg/home.svg">
           <img v-show="this.$route.name !== 'Home'" slot="icon" src="../assets/svg/home-hover.svg">

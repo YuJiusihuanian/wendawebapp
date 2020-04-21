@@ -97,6 +97,7 @@
           })
       },
       mounted(){
+		  
         this.topicId = this.$route.params.id;
         this.$ajax({
             method: 'get',

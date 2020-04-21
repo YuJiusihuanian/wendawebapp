@@ -1,7 +1,7 @@
 <template>
-  <div id="Home">
-    <n-avbar></n-avbar>
-    <l-oadmore></l-oadmore>
+    <div id="Home" ref="wrapper">
+		<n-avbar></n-avbar>
+		<l-oadmore></l-oadmore>
     <t-abbar></t-abbar>
   </div>
 </template>
