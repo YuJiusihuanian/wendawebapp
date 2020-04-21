@@ -1,7 +1,7 @@
 <template>
   <div id="Loadmore">
-      <ul id="aa" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="50" infinite-scroll-immediate-check=true>
-        <li id="bb" class="topic" v-for="item in topics" :key="item.id">
+      <ul class="topicsMen" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="50" infinite-scroll-immediate-check=true>
+        <li class="topic" v-for="item in topics" :key="item.id">
           <router-link :to="{name:'Topic',params:{id:item.id}}">
             <div class="img">
 				<img class="head" :src="item.author.avatar_url" alt="">
@@ -188,6 +188,9 @@
     font-size:0.24rem;
     padding-top:0.8rem;
 	background:#ebebeb;
+  }
+  #Loadmore .topicsMen{
+	  padding-bottom:0.01rem;
   }
   #Loadmore .topic{
     height:1.4rem;

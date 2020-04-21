@@ -1,9 +1,12 @@
 <template>
   <div id="Login">
     <div class="login">
-      <mt-field class="loginname" placeholder="Access Token" v-model="token" maxlength="36"></mt-field>
+      <mt-field class="loginname" placeholder="5d1e4de6-91be-42bf-b22b-9d55baaa60ce" v-model="token" maxlength="36"></mt-field>
       <mt-button @click="login" size="normal" class="loginbtn" type="default">登录</mt-button>
-    </div>
+    <div class="test">
+		<p>测试账号（点击登录马上体验吧！）</p>
+	</div>
+	</div>
 
     <a-bout class="about"></a-bout>
   </div>
@@ -96,6 +99,14 @@
     width:100%;
     background-color:#fff;
     margin:0 auto;
+  }	
+	#Login .login .test{
+		margin-top:0.5rem;
+	}
+  #Login .login .test p{
+	  font-size:0.24rem;
+	  line-height:0.24rem;
+	  color:#888;
   }
   #Login .login{
     margin:0 auto;
