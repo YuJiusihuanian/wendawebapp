@@ -20,32 +20,44 @@
     },
     components:{
     },
+	activated(){
+		
+	},
+	deactivated(){
+		//$destroy
+		
+	},
     methods:{
-
-    },
-    watch:{
-      selected:function(num){
-          if(num){
-              switch(num){
-                case '1':this.$router.push({'Home':'home'});
-                break;
-                case '2':this.$router.push({'Home':'home',query:{tab:'good'}});
-                  break;
-                case '3':this.$router.push({'Home':'home',query:{tab:'share'}});
-                  break;
-                case '4':this.$router.push({'Home':'home',query:{tab:'ask'}});
-                  break;
-                case '5':this.$router.push({'Home':'home',query:{tab:'job'}});
-                  break;
-              }
-          }
-  },
-		'$route' (to,from){
-			//底部导航返回首页重置数据
-			if(to.name === 'Home' && (from.name === 'Publish' || from.name === 'Message' || from.name === 'More')){
-				this.$refs.click.$el.click();
+		select(num){
+			if(num){
+				switch(num){
+				  case '1':this.$router.push({'Home':'home'});
+				  break;
+				  case '2':this.$router.push({'Home':'home',query:{tab:'good'}});
+					break;
+				  case '3':this.$router.push({'Home':'home',query:{tab:'share'}});
+					break;
+				  case '4':this.$router.push({'Home':'home',query:{tab:'ask'}});
+					break;
+				  case '5':this.$router.push({'Home':'home',query:{tab:'job'}});
+					break;
+				}
 			}
 		}
+    },
+    watch:{
+	selected:function(num){
+         this.select(num);
+	},
+	'$route' (to,from){	
+		if(to.name === 'Home' && from.name ==='Home'){
+			this.select(this.selected);
+		}
+		//底部导航返回首页重置数据
+		if(to.name === 'Home' && (from.name === 'Publish' || from.name === 'Message' || from.name === 'More')){
+			this.selected = 1;
+		}
+	}
     }
   }
 </script>

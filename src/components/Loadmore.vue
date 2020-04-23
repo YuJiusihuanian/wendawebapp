@@ -61,14 +61,17 @@
       }	  
     },
 	activated(){
-		/* if(this.$route.query && this.$route.query.tab){
+		//在分类返回时将样式修正
+		 if(this.$route.query && this.$route.query.tab){
 		  this.topicarg.tab = this.$route.query.tab;
-		} */
+		  
+		}
 		//设置滚动条
 		this.cacheData = window.localStorage.getItem(this.key) ?JSON.parse(window.localStorage.getItem(this.key)) : null
 		document.body.scrollTop = this.cacheData;
 	},
 	deactivated () {
+		
 		//获取滚动条
 		 window.localStorage.setItem(this.key, JSON.stringify(document.body.scrollTop))
 	},
