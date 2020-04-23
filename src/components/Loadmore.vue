@@ -26,6 +26,7 @@
           </router-link>
         </li>
       </ul>
+	  <p class="bottomText">我是有底线的~</p>
    </div>
 </template>
 <script>
@@ -80,6 +81,7 @@
 			new_str= arr.join(",");
 		},
       loadMore() {
+		  console.log('无限滚动')
 		if(this.loginimg){
 			this.loading = true;
 			setTimeout(() => {
@@ -87,7 +89,7 @@
 			  this.getTopics();
 			  this.loading = false;
 			}, 1000);
-		}  
+		}  		 // console.log(this.topicarg.page)
       },
       getTopics(){
         this.$ajax({
@@ -112,8 +114,11 @@
             /* date: response.data.data[0].content, */
             length: response.data.data.length,
           }
-		  if(response.data.data.length == 0){
+		  console.log(response.data.data.length)
+		  if(response.data.data.length === 0){
 			  this.loginimg = false;
+		  }else{
+			  this.loginimg = true;
 		  }
           if ( response.data && response.data.data) {
             response.data.data.forEach(this.mergeTopics);
@@ -184,10 +189,15 @@
     background:#fff;
     width:100%;
     height:100%;
-    margin-bottom:1rem;
+    padding-bottom:2rem;
     font-size:0.24rem;
     padding-top:0.8rem;
 	background:#ebebeb;
+  }
+  #Loadmore .bottomText{
+	  text-align:center;
+	  font-size:0.24rem;
+	  color:#999;
   }
   #Loadmore .topicsMen{
 	  padding-bottom:0.01rem;

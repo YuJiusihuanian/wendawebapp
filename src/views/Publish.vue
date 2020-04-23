@@ -73,7 +73,7 @@
           let data = {
               title:this.topic.title,
               tab:this.topic.tab,
-              content:this.topic.content + this.vs,
+              content:this.topic.content,//可能会出现undefined
               accesstoken:this.userInfo.token
           }
           let addData = qs.stringify(data);
@@ -93,9 +93,9 @@
                   })
               }
           }.bind(this)).catch(function(error){
-            if(error.data.response){
+            if(!error.request.response.success){
               Toast({
-                message:error.data.response.data.error_msg,
+                message:error.request.response.error_msg,
                 className:'toast'
               })
             }
