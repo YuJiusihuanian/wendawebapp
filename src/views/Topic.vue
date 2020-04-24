@@ -82,7 +82,7 @@
             show:'',
 			reply:true,
             replyId:'',
-            addtext:'<a>来自vue-wenda</a>'
+            addtext:'-----------来自vue-wenda'
           }
       },
       computed: {//对象展开，this.userInfo映射为this.$store.getters.getUserInfo
@@ -160,9 +160,17 @@
                 }).then(function(res){
                     if(res.data.success){
                         if(res.data.action === 'down'){
+							Toast({
+							  message:'取消点赞',
+							  className:'toast'
+							})
                             let index = this.inArray(this.userInfo.userId,item.ups,true);
                             item.ups.splice(index, 1);
                         }else if(res.data.action === 'up'){
+							Toast({
+							  message:'点赞成功',
+							  className:'toast'
+							})
                             item.ups.push(this.userInfo.userId);
                         }
                     }

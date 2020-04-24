@@ -44,7 +44,6 @@
     },
 
     methods:{
-      //
       login(){
         if(this.token === ''){
           Toast({
@@ -79,12 +78,14 @@
                 loginname:user.loginname
             }
           });
-
-
-        }.bind(this)).catch(function(error){
-          if(error.data.response){
+		  Toast({
+		    message:'登录成功！',
+		    className:'toast',
+		  })
+        }.bind(this)).catch(function(error){		
+          if(!JSON.parse(error.request.response).success){
             Toast({
-              message:error.data.response.data.error_msg,
+              message:JSON.parse(error.request.response).error_msg,
               className:'toast',
             })
           }

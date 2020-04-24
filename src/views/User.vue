@@ -94,6 +94,7 @@
 				  message:'您已退出！',
 				  className:'toast'
 				})
+				window.window.sessionStorage.user = '';
 				this.$router.push({
 				  name:'More'
 				});

@@ -84,7 +84,6 @@
 			new_str= arr.join(",");
 		},
       loadMore() {
-		  console.log('无限滚动')
 		if(this.loginimg){
 			this.loading = true;
 			setTimeout(() => {
@@ -92,7 +91,7 @@
 			  this.getTopics();
 			  this.loading = false;
 			}, 1000);
-		}  		 // console.log(this.topicarg.page)
+		}  	
       },
       getTopics(){
         this.$ajax({
@@ -113,8 +112,7 @@
           }
 
         }).then(function (response) {
-          let topics = {// eslint-disable-line no-unused-vars
-            /* date: response.data.data[0].content, */
+          let topics = {
             length: response.data.data.length,
           }
 		  if(response.data.data.length === 0){

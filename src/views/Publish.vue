@@ -1,6 +1,5 @@
 <template>
   <div id="Publish">
-    
     <mt-field calss="title" placeholder="请输入标题" v-model="topic.title"></mt-field>
     <mt-picker :itemHeight=50 class="picker" :slots="slots" @change="onValuesChange"></mt-picker>
     <mt-field class="content" placeholder="请输入发表的内容" type="textarea" rows="5" v-model="topic.content"></mt-field>
@@ -87,6 +86,10 @@
             data:addData
 
           }).then(function(res){
+				Toast({
+					message:'发表成功！',
+					className:'toast'
+				})
               if(res.data.success){
                   this.$router.push({
                     name:'Home'

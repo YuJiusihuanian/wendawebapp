@@ -9,7 +9,20 @@
     <mt-tab-container v-model="selected" id='main'>
       <mt-tab-container-item id="1">
         <ul>
-          <Li></Li>
+          <li class="message" v-for="(item,index) in notMessageData" :key='index'>
+            <router-link class="messageimg" :to="{name:'User',params:{loginname:item.author.loginname}}">
+              <img :src="item.author.avatar_url" alt="">
+            </router-link>
+            <router-link class="messagecontent" :to="{name:'Topic',params:{id:item.topic.id}}">
+              <div class="content">
+                <p class="title">{{item.topic.title}}</p>
+                <p class="nametime">
+                  <span>{{item.author.loginname}}</span>
+                  <span class="name">{{item.reply.create_at | getLastTimeStr(true)}}</span>
+                </p>
+              </div>
+            </router-link>
+          </li>
         </ul>
       </mt-tab-container-item>
       <mt-tab-container-item id="2">
@@ -77,7 +90,7 @@
             this.messageData = res.data.data.has_read_messages;
           }
           if(res.data.data.hasnot_read_messages.length > 0){
-            this.notMessageData = res.data.data.has_read_messages;
+            this.notMessageData = res.data.data.hasnot_read_messages;
           }
       }.bind(this))
   },
