@@ -54,7 +54,7 @@
 			this.select(this.selected);
 		}
 		//底部导航返回首页重置数据
-		if(to.name === 'Home' && (from.name === 'Publish' || from.name === 'Message' || from.name === 'More')){
+		if(to.name === 'Home' && (!(from.name === 'Home'))){
 			this.selected = 1;
 		}
 	}

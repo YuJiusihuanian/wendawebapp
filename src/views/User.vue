@@ -3,7 +3,7 @@
     <div v-if="userInfo">
       <div class="header">
         <h3>个人中心</h3>
-        <!--<button @click="abc">退出登录</button>-->
+        <a class="exitBtn" @click="exit">退出登录</a>	
         <img :src="user.avatar_url" alt="" class="userimg">
         <p class="username" v-text="user.loginname"></p>
         <!--<div class="headertext">-->
@@ -78,7 +78,7 @@
       computed:{
         ...mapGetters({
           userInfo:'getUserInfo'
-        })
+        }),
       },
       mounted(){
         this.getUser();
@@ -87,6 +87,17 @@
           }
       },
       methods:{
+		  //退出登录
+			exit(){
+				this.clearUserInfo();
+				Toast({
+				  message:'您已退出！',
+				  className:'toast'
+				})
+				this.$router.push({
+				  name:'More'
+				});
+			},
           getUser(){
               let loginname = this.$route.params.loginname;
               if(!loginname){
@@ -121,12 +132,9 @@
         getLastTimeStr(data,friendly){
           return utils.getLastTimeStr(data,friendly);
         },
-        abc(){
-
-        },
-        ...mapMutations({
-        clearUserInfo:'clearUserInfo'
-      }),
+		...mapMutations({
+			clearUserInfo:'clearUserInfo'
+		}),
       },
       watch:{
           '$route' (){
@@ -137,11 +145,22 @@
     }
 </script>
 <style>
-  /* @import '../less/common.less'; */
+  @import '../css/common.css';
   #User{
     width:100%;
     background:#fff;
     font-size:0.32rem;
+	position:relative;
+  }
+  #User .exitBtn{
+	color:#ffffff;
+	position: absolute;
+	top:0.5rem;
+	right:0.5rem;
+	background-color:#ff9d00;
+	padding:0.2rem;
+	text-align:center;
+	border-radius:5rem;
   }
   #User .header{
     width:100%;
@@ -220,20 +239,6 @@
   #User .listcontent span{
     font-size:0.24rem;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   #User .toast span{
     font-size:0.32rem;
   }

@@ -117,7 +117,6 @@
             /* date: response.data.data[0].content, */
             length: response.data.data.length,
           }
-		  console.log(response.data.data.length)
 		  if(response.data.data.length === 0){
 			  this.loginimg = false;
 		  }else{

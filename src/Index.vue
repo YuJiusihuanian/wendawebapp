@@ -18,7 +18,7 @@
 }
 </script>
 
-<style lang="less">
+<style>
   @import 'css/common.css';
   body{
     background:url(./assets/gif/login4.gif) no-repeat center #fff;
